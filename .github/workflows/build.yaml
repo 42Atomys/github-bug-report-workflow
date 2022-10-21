@@ -1,0 +1,9 @@
+name: "Build"
+on:
+  workflow_call:
+
+jobs:
+  docker_image:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Done ✅"

@@ -1,0 +1,30 @@
+name: CI/CD 🚀
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  linters:
+    name: "Linters 🧹"
+    uses: ./.github/workflows/linters.yaml
+
+  tests:
+    name: Tests 🧪
+    uses: ./.github/workflows/tests.yaml
+    secrets: inherit
+
+  build:
+    name: "Build 🔧"
+    needs: [linters, tests]
+    uses: ./.github/workflows/build.yaml
+
+  deploy:
+    name: "Deploy 🚀"
+    needs: [build]
+    uses: ./.github/workflows/deploy.yaml
+    secrets: inherit

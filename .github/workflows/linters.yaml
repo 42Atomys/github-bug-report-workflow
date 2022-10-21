@@ -1,0 +1,19 @@
+name: "Linters"
+on:
+  workflow_call:
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Done ✅"
+
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Done ✅"
+
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Done ✅"
